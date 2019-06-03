@@ -1,0 +1,11 @@
+---
+kind: pipeline
+name: default
+
+steps:
+  - name: rspec
+    image: ruby:2.5-alpine
+    commands:
+      - rm -rf Gemfile.lock | true
+      - bundle install
+      - bundle exec rspec
