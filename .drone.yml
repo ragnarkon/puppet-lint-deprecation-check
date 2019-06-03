@@ -4,7 +4,7 @@ name: default
 
 steps:
   - name: rspec
-    image: ruby:2.5-alpine
+    image: ruby:2.5
     commands:
       - rm -rf Gemfile.lock | true
       - bundle install
