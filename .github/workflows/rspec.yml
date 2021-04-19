@@ -1,0 +1,29 @@
+---
+name: Rspec
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        ruby: ['2.5', '2.7']
+
+    name: Ruby ${{ matrix.ruby }}
+
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v2
+    - name: Set up Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: ${{ matrix.ruby }}
+    - name: Test with Rspec
+      run: |
+        rm -rf Gemfile.lock | true
+        gem install bundler
+        bundle install
+        bundle exec rspec

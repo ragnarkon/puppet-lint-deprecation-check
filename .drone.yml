@@ -1,24 +1,6 @@
 ---
 kind: pipeline
-name: 'Ruby 2.4.x'
-trigger:
-  event:
-    - push
-
-steps:
-  - name: RSpec
-    image: ruby:2.4
-    commands:
-      - rm -rf Gemfile.lock | true
-      - bundle install
-      - bundle exec rspec
-
----
-kind: pipeline
-name: 'Ruby 2.5.x'
-trigger:
-  event:
-    - push
+name: ruby2.5
 
 steps:
   - name: RSpec
@@ -28,3 +10,14 @@ steps:
       - bundle install
       - bundle exec rspec
 ...
+---
+kind: pipeline
+name: ruby2.7
+
+steps:
+  - name: rspec
+    image: ruby:2.7
+    commands:
+      - rm -rf Gemfile.lock | true
+      - bundle install
+      - bundle exec rspec
