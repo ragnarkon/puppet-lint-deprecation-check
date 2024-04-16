@@ -1,0 +1,21 @@
+---
+name: Gitea Actions Demo
+run-name: ${{ gitea.actor }} is testing out Gitea Actions 🚀
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '2.7'
+      - name: Checkout Code
+        uses: actions/checkout@v4
+      - name: Rspec
+        run: |
+          rm -rf Gemfile.lock | true
+          gem install bundler
+          bundle install
+          bundle exec rspec
