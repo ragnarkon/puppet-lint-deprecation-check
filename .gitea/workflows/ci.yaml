@@ -16,6 +16,5 @@ jobs:
       - name: Rspec
         run: |
           rm -rf Gemfile.lock | true
-          gem install bundler
           bundle install
           bundle exec rspec
