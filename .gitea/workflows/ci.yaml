@@ -1,16 +1,19 @@
 ---
-name: Gitea Actions Demo
-run-name: ${{ gitea.actor }} is testing out Gitea Actions 🚀
+name: Rspec
+
 on: [push]
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        ruby: ['2.5', '2.7', '3.3']
     steps:
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '2.7'
+          ruby-version: ${{ matrix.ruby }}
       - name: Checkout Code
         uses: actions/checkout@v4
       - name: Rspec
